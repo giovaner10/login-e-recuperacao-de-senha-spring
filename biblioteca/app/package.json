@@ -1,0 +1,36 @@
+{
+  "name": "playground-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.27.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-scripts": "5.0.0",
+    "webstomp-client": "^1.2.6"
+  },
+  "proxy": "http://localhost:8080",
+  "scripts": {
+    "start": "cross-env react-scripts start",
+    "build": "react-scripts build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "cross-env": "7.0.3",
+    "sonarqube-scanner": "2.1.2"
+  }
+}
