@@ -5,6 +5,7 @@ import br.com.cwi.crescer.usuarios.controller.response.UsuarioResponse;
 import br.com.cwi.crescer.usuarios.domain.Permissao;
 import br.com.cwi.crescer.usuarios.domain.Usuario;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -16,6 +17,8 @@ public class UsuarioMapper {
         entity.setNomeCompleto(request.getNomeCompleto());
         entity.setEmail(request.getEmail());
         entity.setFoto(request.getFoto());
+        entity.setAtivo(true);
+        entity.setCriadoEm(LocalDateTime.now());
 
         return entity;
     }

@@ -5,8 +5,10 @@ import br.com.cwi.crescer.usuarios.controller.request.EmailSolicitarRequest;
 import br.com.cwi.crescer.usuarios.controller.response.UsuarioResponse;
 import br.com.cwi.crescer.usuarios.service.login.RecuperarSenhaService;
 import br.com.cwi.crescer.usuarios.service.login.SolicitarTrocaSenhaService;
-import br.com.cwi.crescer.usuarios.service.usuario.UsuarioAutenticadoService;
+import br.com.cwi.crescer.usuarios.security.service.UsuarioAutenticadoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -25,15 +27,14 @@ public class LoginController {
     private RecuperarSenhaService recuperarSenhaService;
 
     @PostMapping
-    public UsuarioResponse login() {
-        return service.getResponse();
+    public UsuarioResponse login(@AuthenticationPrincipal UserDetails userDetails) {
+        return service.getResponse(userDetails.getUsername());
     }
 
     @GetMapping("/me")
-    public UsuarioResponse me() {
-        return service.getResponse();
+    public UsuarioResponse me(@AuthenticationPrincipal UserDetails userDetails) {
+        return service.getResponse(userDetails.getUsername());
     }
-
 
     @PostMapping("/solicitar")
     public void solicitar(@Valid @RequestBody EmailSolicitarRequest email) {

@@ -1,4 +1,4 @@
-package br.com.cwi.crescer.usuarios.security.config;
+package br.com.cwi.crescer.usuarios.security.cofig;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

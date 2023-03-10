@@ -1,5 +1,7 @@
 package br.com.cwi.crescer.usuarios.controller.request;
 
+import br.com.cwi.crescer.usuarios.domain.Funcao;
+import br.com.cwi.crescer.usuarios.domain.Permissao;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,5 +29,5 @@ public class UsuarioRequest {
     private String foto;
 
     @NotNull @NotEmpty
-    private List<String> permissoes;
+    private List<Funcao> permissoes;
 }

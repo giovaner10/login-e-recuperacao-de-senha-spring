@@ -1,9 +1,6 @@
 package br.com.cwi.crescer.usuarios.domain;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
@@ -17,6 +14,9 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Getter @Setter @EqualsAndHashCode(of = "id") @ToString(of = "id")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Permissao {
 
     @Id

@@ -26,7 +26,7 @@ public class UsuarioController {
     }
 
     @PutMapping("admin/{usuarioId}")
-    public UsuarioResponse atualizar(@PathVariable Long usuarioId,@Valid @RequestBody UsuarioAtualizarRequest request) {
+    public UsuarioResponse atualizar(@PathVariable Long usuarioId, @Valid @RequestBody UsuarioAtualizarRequest request) {
         return atualizarUsuarioService.atualizar(usuarioId, request);
     }
 }

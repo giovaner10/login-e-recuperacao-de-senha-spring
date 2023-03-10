@@ -1,4 +1,4 @@
-package br.com.cwi.crescer.usuarios.security.config;
+package br.com.cwi.crescer.usuarios.security.details;
 
 import br.com.cwi.crescer.usuarios.domain.Usuario;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Getter
-public class UsuarioSecurity implements UserDetails {
+public class UsuarioSecurityDetails implements UserDetails {
 
     private final Long id;
     private final String username;
@@ -21,7 +21,7 @@ public class UsuarioSecurity implements UserDetails {
     private final boolean credentialsNonExpired;
     private final boolean enabled;
 
-    public UsuarioSecurity(Usuario usuario) {
+    public UsuarioSecurityDetails(Usuario usuario) {
 
         this.id = usuario.getId();
         this.username = usuario.getEmail();

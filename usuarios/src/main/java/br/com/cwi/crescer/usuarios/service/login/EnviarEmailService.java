@@ -1,13 +1,13 @@
 package br.com.cwi.crescer.usuarios.service.login;
 
 
+import br.com.cwi.crescer.usuarios.excpetions.NegocioException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class EnviarEmailService {
@@ -27,7 +27,7 @@ public class EnviarEmailService {
             emailSender.send(menssagem);
 
        } catch (MailException e) {
-            throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, "Falha ao enviar email");
+            throw new NegocioException(HttpStatus.UNPROCESSABLE_ENTITY, "Falha ao enviar email");
         }
     }
 

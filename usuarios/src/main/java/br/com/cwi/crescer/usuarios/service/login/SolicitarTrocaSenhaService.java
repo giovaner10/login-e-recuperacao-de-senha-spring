@@ -4,6 +4,7 @@ package br.com.cwi.crescer.usuarios.service.login;
 import br.com.cwi.crescer.usuarios.controller.request.EmailSolicitarRequest;
 import br.com.cwi.crescer.usuarios.domain.Token;
 import br.com.cwi.crescer.usuarios.domain.Usuario;
+import br.com.cwi.crescer.usuarios.excpetions.NegocioException;
 import br.com.cwi.crescer.usuarios.factory.TokenFactory;
 import br.com.cwi.crescer.usuarios.repository.TokenRepository;
 import br.com.cwi.crescer.usuarios.validator.BuscarValidarUsuarioService;
@@ -37,7 +38,7 @@ public class SolicitarTrocaSenhaService {
             if (LocalDateTime.now().isAfter(usuario.getToken().getDataExpiracao())) {
                 tokenRepository.delete(usuario.getToken());
             } else {
-                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Token ja solicitado, verifique sua caixa de emails");
+                throw new NegocioException(HttpStatus.NOT_FOUND, "Token ja solicitado, verifique sua caixa de emails");
             }
         }
 

@@ -1,4 +1,4 @@
-package br.com.cwi.crescer.usuarios.security.config;
+package br.com.cwi.crescer.usuarios.security.cofig;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,8 +32,6 @@ public class SecurityConfig {
                         .antMatchers("/**/admin/**").hasRole("ADMIN")
                         .antMatchers(POST, "/usuarios").permitAll()
                         .antMatchers("/login/**").permitAll()
-
-
 
                 .and()
                     .authorizeRequests()

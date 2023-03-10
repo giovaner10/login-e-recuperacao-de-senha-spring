@@ -1,7 +1,10 @@
-package br.com.cwi.crescer.usuarios.security.config;
+package br.com.cwi.crescer.usuarios.security.service;
 
+import br.com.cwi.crescer.usuarios.excpetions.NegocioException;
 import br.com.cwi.crescer.usuarios.repository.UsuarioRepository;
+import br.com.cwi.crescer.usuarios.security.details.UsuarioSecurityDetails;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -17,7 +20,7 @@ public class BuscarUsuarioSecuritySerivce implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
         return usuarioRepository.findByEmail(email)
-                .map(UsuarioSecurity::new)
-                .orElseThrow(() -> new UsernameNotFoundException("Credenciais inválidas"));
+                .map(UsuarioSecurityDetails::new)
+                .orElseThrow(() -> new NegocioException(HttpStatus.BAD_REQUEST,"Credenciais inválidas"));
     }
 }
