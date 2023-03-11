@@ -27,9 +27,9 @@ public class IncluirUsuarioService {
     @Autowired
     private EncoderFactory encoderFactory;
 
-
     @Autowired
     private ValidarEmailUsuarioService emailUsuarioService;
+
 
     public UsuarioResponse incluir(UsuarioRequest request) {
 

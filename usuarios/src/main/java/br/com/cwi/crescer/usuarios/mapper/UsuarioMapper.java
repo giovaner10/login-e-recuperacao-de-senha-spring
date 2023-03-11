@@ -28,6 +28,7 @@ public class UsuarioMapper {
                 .id(entity.getId())
                 .nomeCompleto(entity.getNomeCompleto())
                 .email(entity.getEmail())
+                .foto(entity.getFoto())
                 .permissoes(buildPermissoesResponse(entity.getPermissoes()))
                 .build();
     }

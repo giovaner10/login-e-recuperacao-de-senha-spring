@@ -31,7 +31,7 @@ public class SecurityConfig {
                     .authorizeRequests()
                         .antMatchers("/**/admin/**").hasRole("ADMIN")
                         .antMatchers(POST, "/usuarios").permitAll()
-                        .antMatchers("/login/**").permitAll()
+                        .antMatchers(POST, "/login/**").permitAll()
 
                 .and()
                     .authorizeRequests()
