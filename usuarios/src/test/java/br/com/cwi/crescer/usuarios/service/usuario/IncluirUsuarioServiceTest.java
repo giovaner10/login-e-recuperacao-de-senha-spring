@@ -1,14 +1,13 @@
 package br.com.cwi.crescer.usuarios.service.usuario;
 
 
-import br.com.cwi.crescer.usuarios.controller.request.UsuarioRequest;
-import br.com.cwi.crescer.usuarios.domain.Funcao;
+import br.com.cwi.crescer.usuarios.controller.request.usuario.UsuarioRequest;
 import br.com.cwi.crescer.usuarios.domain.Usuario;
 import br.com.cwi.crescer.usuarios.excpetions.NegocioException;
-import br.com.cwi.crescer.usuarios.factories.UsuarioFactory;
+import br.com.cwi.crescer.usuarios.factories.login.UsuarioFactory;
 import br.com.cwi.crescer.usuarios.factory.EncoderFactory;
 import br.com.cwi.crescer.usuarios.repository.UsuarioRepository;
-import br.com.cwi.crescer.usuarios.validator.ValidarEmailUsuarioService;
+import br.com.cwi.crescer.usuarios.service.validator.BuscarValidarUsuarioService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,7 +17,6 @@ import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -30,7 +28,7 @@ class IncluirUsuarioServiceTest {
     private IncluirUsuarioService validator;
 
     @Mock
-    private ValidarEmailUsuarioService validarEmailUsuarioService;
+    private BuscarValidarUsuarioService validarEmailUsuarioService;
 
     @Mock
     private UsuarioRepository usuarioRepository;

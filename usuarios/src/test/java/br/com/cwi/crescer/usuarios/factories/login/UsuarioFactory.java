@@ -1,14 +1,12 @@
-package br.com.cwi.crescer.usuarios.factories;
+package br.com.cwi.crescer.usuarios.factories.login;
 
 
-
-import br.com.cwi.crescer.usuarios.controller.request.UsuarioAtualizarRequest;
-import br.com.cwi.crescer.usuarios.controller.request.UsuarioRequest;
-import br.com.cwi.crescer.usuarios.domain.Funcao;
+import br.com.cwi.crescer.usuarios.controller.request.usuario.UsuarioAtualizarRequest;
+import br.com.cwi.crescer.usuarios.controller.request.usuario.UsuarioRequest;
 import br.com.cwi.crescer.usuarios.domain.Usuario;
+import br.com.cwi.crescer.usuarios.factories.login.SimpleFactory;
 
 import java.time.LocalDate;
-import java.util.List;
 
 public class UsuarioFactory {
 
@@ -28,7 +26,7 @@ public class UsuarioFactory {
         usuario.setEmail("teste@cwi.com.br");
         usuario.setFoto("mina foto");
         usuario.setSenha("minha senha");
-        usuario.setPermissoes(List.of(Funcao.USUARIO));
+        usuario.setIsAdmin(false);
         return usuario;
     }
 
@@ -38,7 +36,7 @@ public class UsuarioFactory {
         usuario.setEmail("teste@cwi.com.br");
         usuario.setFoto("mina foto");
         usuario.setSenha("minha senha");
-        usuario.setPermissoes(List.of(Funcao.ADMIN));
+        usuario.setIsAdmin(true);
         return usuario;
     }
 

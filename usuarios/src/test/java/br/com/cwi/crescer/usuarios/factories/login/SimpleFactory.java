@@ -1,4 +1,4 @@
-package br.com.cwi.crescer.usuarios.factories;
+package br.com.cwi.crescer.usuarios.factories.login;
 
 import java.util.Random;
 
@@ -9,7 +9,8 @@ public class SimpleFactory {
     }
 
     public static String getEmail() {
-        return "meu@cwi.com.br";
+        return "teste@cwi.com.br";
     }
+
 
 }

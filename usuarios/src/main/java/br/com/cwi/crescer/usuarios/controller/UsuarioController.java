@@ -1,7 +1,7 @@
 package br.com.cwi.crescer.usuarios.controller;
 
-import br.com.cwi.crescer.usuarios.controller.request.UsuarioAtualizarRequest;
-import br.com.cwi.crescer.usuarios.controller.request.UsuarioRequest;
+import br.com.cwi.crescer.usuarios.controller.request.usuario.UsuarioAtualizarRequest;
+import br.com.cwi.crescer.usuarios.controller.request.usuario.UsuarioRequest;
 import br.com.cwi.crescer.usuarios.controller.response.UsuarioResponse;
 import br.com.cwi.crescer.usuarios.service.usuario.AtualizarUsuarioService;
 import br.com.cwi.crescer.usuarios.service.usuario.IncluirUsuarioService;

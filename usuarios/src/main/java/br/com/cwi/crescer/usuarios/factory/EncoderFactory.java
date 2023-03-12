@@ -14,5 +14,4 @@ public class EncoderFactory {
         return passwordEncoder.encode(senhaAberta);
     }
 
-
 }

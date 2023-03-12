@@ -1,15 +1,11 @@
-package br.com.cwi.crescer.usuarios.controller.request;
+package br.com.cwi.crescer.usuarios.controller.request.usuario;
 
-import br.com.cwi.crescer.usuarios.domain.Funcao;
-import br.com.cwi.crescer.usuarios.domain.Permissao;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Getter
 @Setter
@@ -19,7 +15,7 @@ public class UsuarioRequest {
     private String nomeCompleto;
 
     @NotNull
-    @Email
+    @Email(regexp = ".+@.+\\..+")
     private String email;
 
     @NotBlank
@@ -28,6 +24,6 @@ public class UsuarioRequest {
     @NotBlank
     private String foto;
 
-    @NotNull @NotEmpty
-    private List<Funcao> permissoes;
+    @NotNull
+    private Boolean isAdmin;
 }

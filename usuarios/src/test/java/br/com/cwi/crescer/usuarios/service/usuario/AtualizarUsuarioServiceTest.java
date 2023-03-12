@@ -1,11 +1,11 @@
 package br.com.cwi.crescer.usuarios.service.usuario;
 
-import br.com.cwi.crescer.usuarios.controller.request.UsuarioAtualizarRequest;
+import br.com.cwi.crescer.usuarios.controller.request.usuario.UsuarioAtualizarRequest;
 import br.com.cwi.crescer.usuarios.domain.Usuario;
 import br.com.cwi.crescer.usuarios.excpetions.NegocioException;
-import br.com.cwi.crescer.usuarios.factories.UsuarioFactory;
+import br.com.cwi.crescer.usuarios.factories.login.UsuarioFactory;
 import br.com.cwi.crescer.usuarios.repository.UsuarioRepository;
-import br.com.cwi.crescer.usuarios.validator.BuscarValidarUsuarioService;
+import br.com.cwi.crescer.usuarios.service.validator.BuscarValidarUsuarioService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -49,7 +49,7 @@ class AtualizarUsuarioServiceTest {
     @DisplayName("Deve atualizar usuario valido")
     void deveAtualizarUsuarioValido() {
 
-        when(buscarUsuarioService.porId(usuario.getId())).thenReturn(usuario);
+        when(buscarUsuarioService.devolverPorId(usuario.getId())).thenReturn(usuario);
 
         validator.atualizar(usuario.getId(), request);
 
@@ -67,7 +67,7 @@ class AtualizarUsuarioServiceTest {
     @DisplayName("nao deve atualizar com usuario inexistente")
     void lacarExcessaoUsuarioInexistente() {
 
-        doThrow(NegocioException.class).when(buscarUsuarioService).porId(usuario.getId());
+        doThrow(NegocioException.class).when(buscarUsuarioService).devolverPorId(usuario.getId());
 
         assertThrows(NegocioException.class, () -> validator.atualizar(usuario.getId(), request));
 

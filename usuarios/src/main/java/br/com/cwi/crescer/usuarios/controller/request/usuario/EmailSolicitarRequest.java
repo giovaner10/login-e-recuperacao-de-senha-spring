@@ -1,4 +1,4 @@
-package br.com.cwi.crescer.usuarios.controller.request;
+package br.com.cwi.crescer.usuarios.controller.request.usuario;
 
 import lombok.Getter;
 import lombok.Setter;

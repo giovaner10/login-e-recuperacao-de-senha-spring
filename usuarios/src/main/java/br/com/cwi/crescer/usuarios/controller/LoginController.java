@@ -1,7 +1,7 @@
 package br.com.cwi.crescer.usuarios.controller;
 
-import br.com.cwi.crescer.usuarios.controller.request.EmailRecuperarRequest;
-import br.com.cwi.crescer.usuarios.controller.request.EmailSolicitarRequest;
+import br.com.cwi.crescer.usuarios.controller.request.usuario.EmailRecuperarRequest;
+import br.com.cwi.crescer.usuarios.controller.request.usuario.EmailSolicitarRequest;
 import br.com.cwi.crescer.usuarios.controller.response.UsuarioResponse;
 import br.com.cwi.crescer.usuarios.service.login.RecuperarSenhaService;
 import br.com.cwi.crescer.usuarios.service.login.SolicitarTrocaSenhaService;
@@ -38,7 +38,7 @@ public class LoginController {
 
     @PostMapping("/solicitar")
     public void solicitar(@Valid @RequestBody EmailSolicitarRequest email) {
-        emailService.solicitar(email);
+        emailService.solicitar(email.getEmail());
     }
 
     @PostMapping("/recuperar")

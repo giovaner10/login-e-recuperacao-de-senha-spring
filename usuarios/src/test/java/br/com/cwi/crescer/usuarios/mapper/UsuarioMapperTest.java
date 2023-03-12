@@ -1,10 +1,10 @@
 package br.com.cwi.crescer.usuarios.mapper;
 
 
-import br.com.cwi.crescer.usuarios.controller.request.UsuarioRequest;
+import br.com.cwi.crescer.usuarios.controller.request.usuario.UsuarioRequest;
 import br.com.cwi.crescer.usuarios.controller.response.UsuarioResponse;
 import br.com.cwi.crescer.usuarios.domain.Usuario;
-import br.com.cwi.crescer.usuarios.factories.UsuarioFactory;
+import br.com.cwi.crescer.usuarios.factories.login.UsuarioFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

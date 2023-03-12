@@ -1,20 +1,16 @@
 package br.com.cwi.crescer.usuarios.service.login;
 
 
-import br.com.cwi.crescer.usuarios.controller.request.EmailRecuperarRequest;
+import br.com.cwi.crescer.usuarios.controller.request.usuario.EmailRecuperarRequest;
 import br.com.cwi.crescer.usuarios.domain.Usuario;
-import br.com.cwi.crescer.usuarios.excpetions.NegocioException;
 import br.com.cwi.crescer.usuarios.factory.EncoderFactory;
 import br.com.cwi.crescer.usuarios.repository.TokenRepository;
 import br.com.cwi.crescer.usuarios.repository.UsuarioRepository;
-import br.com.cwi.crescer.usuarios.validator.BuscarValidarUsuarioService;
+import br.com.cwi.crescer.usuarios.service.validator.BuscarValidarUsuarioService;
+import br.com.cwi.crescer.usuarios.validator.login.ValidarTokenValidator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.time.LocalDateTime;
-import java.util.Objects;
 
 @Service
 public class RecuperarSenhaService {
@@ -23,7 +19,7 @@ public class RecuperarSenhaService {
     private UsuarioRepository usuarioRepository;
 
     @Autowired
-    private TokenRepository resetarSenhaRepository;
+    private TokenRepository tokenRepository;
 
     @Autowired
     private EncoderFactory encoderFactory;
@@ -35,22 +31,17 @@ public class RecuperarSenhaService {
     @Transactional
     public void recuperar(EmailRecuperarRequest usuarioDados) {
 
-        Usuario usuario = validarUsuarioService.porEmail(usuarioDados.getEmail());
+        Usuario usuario = validarUsuarioService.devolverPorEmail(usuarioDados.getEmail());
 
-        if (Objects.isNull(usuario.getToken()) || !usuario.getToken().getToken().equals(usuarioDados.getToken())) {
-            throw new NegocioException(HttpStatus.UNPROCESSABLE_ENTITY, "Token invalido");
-        }
-
-        if(LocalDateTime.now().isAfter(usuario.getToken().getDataExpiracao())){
-            throw new NegocioException(HttpStatus.UNPROCESSABLE_ENTITY, "Token invalido");
-        }
+        ValidarTokenValidator.validarToken(usuarioDados.getToken(), usuario.getToken());
 
         usuario.setSenha(encoderFactory.encriptar(usuarioDados.getNovaSenha()));
 
-        resetarSenhaRepository.deleteById(usuario.getToken().getId());
+        tokenRepository.delete(usuario.getToken());
 
         usuarioRepository.save(usuario);
     }
+
 
 }
 

@@ -1,6 +1,7 @@
 package br.com.cwi.crescer.usuarios.excpetions.handler;
 
 
+import br.com.cwi.crescer.usuarios.excpetions.EmailException;
 import br.com.cwi.crescer.usuarios.excpetions.NegocioException;
 import br.com.cwi.crescer.usuarios.excpetions.domain.ExceptionDetalhes;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,19 @@ public class RestExceptionHandler {
 
     @ExceptionHandler(NegocioException.class)
     public ResponseEntity<ExceptionDetalhes> handlerNegocioException(ResponseStatusException e, HttpServletRequest httpServletRequest) {
+
+        ExceptionDetalhes exceptionDetalhes = ExceptionDetalhes.builder()
+                .titulo("Problema encontrado, verifique a menssagem e o status")
+                .message(e.getReason())
+                .path(httpServletRequest.getServletPath())
+                .timestamp(LocalDateTime.now())
+                .status(e.getStatus().value()).build();
+
+        return new ResponseEntity<>(exceptionDetalhes, e.getStatus());
+    }
+
+    @ExceptionHandler(EmailException.class)
+    public ResponseEntity<ExceptionDetalhes> handlerEmailException(ResponseStatusException e, HttpServletRequest httpServletRequest) {
 
         ExceptionDetalhes exceptionDetalhes = ExceptionDetalhes.builder()
                 .titulo("Problema encontrado, verifique a menssagem e o status")

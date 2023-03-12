@@ -1,10 +1,10 @@
 package br.com.cwi.crescer.usuarios.service.usuario;
 
-import br.com.cwi.crescer.usuarios.controller.request.UsuarioAtualizarRequest;
+import br.com.cwi.crescer.usuarios.controller.request.usuario.UsuarioAtualizarRequest;
 import br.com.cwi.crescer.usuarios.controller.response.UsuarioResponse;
 import br.com.cwi.crescer.usuarios.domain.Usuario;
 import br.com.cwi.crescer.usuarios.repository.UsuarioRepository;
-import br.com.cwi.crescer.usuarios.validator.BuscarValidarUsuarioService;
+import br.com.cwi.crescer.usuarios.service.validator.BuscarValidarUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,7 +27,7 @@ public class AtualizarUsuarioService {
     @Transactional
     public UsuarioResponse atualizar(Long idUsuario, UsuarioAtualizarRequest request) {
 
-        Usuario usuario = buscarUsuarioService.porId(idUsuario);
+        Usuario usuario = buscarUsuarioService.devolverPorId(idUsuario);
 
         usuario.setFoto(request.getFoto());
         usuario.setNomeCompleto(request.getNomeCompleto());
